@@ -16,16 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
-
 # import facut de mine
-from viewer.views import hello_viewer, produse_viewer, laptop_viewer
+# from viewer.views import hello_viewer, produse_viewer, laptop_viewer
+from viewer import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', hello_viewer),
-    path('produse/<categorie>/', produse_viewer),
-    path('laptop/<categorie>/', laptop_viewer),
+    path('hello/', views.hello_viewer),
+    path('produse/<categorie>/', views.produse_viewer),
+    path('laptop/<categorie>/', views.laptop_viewer),
+    path('filme/', views.filme_viewer),
 ]
 
 # Exercitiu:
