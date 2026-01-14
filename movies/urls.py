@@ -23,6 +23,9 @@ from viewer import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.show_homepage, name='home'),
+    path('filter/', views.filter_movies),
+    
     path('hello/', views.hello_viewer),
     path('produse/<categorie>/', views.produse_viewer),
     path('laptop/<categorie>/', views.laptop_viewer),

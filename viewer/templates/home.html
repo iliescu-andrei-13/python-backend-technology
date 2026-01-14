@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <title>Movies</title>
+</head>
+<body>
+    <header>
+        <nav>
+            Site filme
+        </nav>
+    </header>
+
+    <br />
+
+    <main>
+        <section>
+            <h1>Aici o sa apara filmele</h1>
+
+            <table border="1" cellpadding="20" cellspacing="0" >
+                <thead>
+                    <tr>
+                        <th>Titlu</th>
+                        <th>An</th>
+                        <th>Descriere</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for movie in movies_html %}
+                        <tr>
+                            <td>{{ movie.title }}</td>
+                            <td>{{ movie.year }}</td>
+                            <td>{{ movie.description }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <br />
+
+            <img src="{% static 'images/cat.jpg' %}" alt="Cat picture" width="200px" />
+
+        </section>
+    </main>
+
+    <br />
+
+    <footer>
+        <p>
+            © 2026 Copyrights ... 
+        </p>
+    </footer>
+</body>
+</html>
