@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} as_p -> paragraf {% endcomment %}
+        {{ form.as_p }}
+        {% comment %} as_table -> tabel {% endcomment %}
+        {% comment %} {{ form.as_table }} {% endcomment %}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

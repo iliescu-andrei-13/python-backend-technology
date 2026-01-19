@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from viewer.models import Movie
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -49,3 +51,29 @@ def filter_movies(request):
         movies = movies.filter(year=year)
 
     return render(request, 'home.html', {'movies_html': movies})
+
+
+class MovieDetailView(DetailView):
+    model = Movie
+    template_name = 'movie.html'
+    context_object_name = 'movie'
+    
+
+class MovieCreateView(CreateView):
+    model = Movie
+    template_name = "create_movie.html"
+    fields = ["title", "year", "description"]
+    success_url = reverse_lazy("home")
+
+
+class MovieUpdateView(UpdateView):
+    model = Movie
+    template_name = "create_movie.html"
+    fields = ["title", "year", "description"]
+    success_url = reverse_lazy("home")
+
+
+class MovieDeleteView(DeleteView):
+    model = Movie
+    template_name = "delete_movie.html"
+    success_url = reverse_lazy("home")

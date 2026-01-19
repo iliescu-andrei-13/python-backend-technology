@@ -30,6 +30,10 @@ urlpatterns = [
     path('produse/<categorie>/', views.produse_viewer),
     path('laptop/<categorie>/', views.laptop_viewer),
     path('filme/', views.filme_viewer),
+    path('movie/<int:pk>/', views.MovieDetailView.as_view()),
+    path('create/', views.MovieCreateView.as_view()),
+    path('update/<int:pk>', views.MovieUpdateView.as_view()),
+    path('delete/<int:pk>', views.MovieDeleteView.as_view()),
 ]
 
 # Exercitiu:

@@ -1,4 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: yellow;
-  color: blue;
+  background: #fafafa;
+  color: #000;
+  font-size: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #000;
+}
+
+.movie_container {
+  border: 2px solid #000;
 }

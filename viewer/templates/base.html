@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <title>Movies</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <a href="{% url 'home' %}">Site filme</a>
+        </nav>
+    </header>
+
+    <br />
+
+    <main>
+        <section>
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+
+    <br />
+
+    <footer>
+        <p>
+            © 2026 Copyrights ... 
+        </p>
+    </footer>
+</body>
+</html>
