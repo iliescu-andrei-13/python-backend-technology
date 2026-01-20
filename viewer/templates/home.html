@@ -2,28 +2,19 @@
 {% load static %}
 
 {% block content %}
-    <h1>Movies Table</h1>
+    <h1>Movies List</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Titlu</th>
-                <th>An</th>
-                <th>Descriere</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {% for movie in movies_html %}
-                <tr>
-                    <td>{{ movie.title }}</td>
-                    <td>{{ movie.year }}</td>
-                    <td>{{ movie.description }}</td>
-                    {% if movie.photo %}
-                        <td><img src="{{ movie.photo.url }}" height="300px" /></td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="cards">
+        {% for movie in movies_html %}
+            <div class="card">
+                {% if movie.photo %}
+                    <img src="{{ movie.photo.url }}" />
+                {% endif %}
+                <h3><b>{{ movie.title }}</b></h3>
+                <p><i>{{ movie.description }}</i></p>
+                <p>{{ movie.year }}</p>
+            </div>
+            <a href="{% url 'spre_film' movie.pk %}">Vezi detalii</a>
+        {% endfor %}
+    </div>
 {% endblock %}

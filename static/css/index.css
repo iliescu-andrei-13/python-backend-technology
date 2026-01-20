@@ -10,21 +10,12 @@ body {
   font-size: 20px;
 }
 
-.table {
-  border-collapse: collapse;
-}
-
-.table td,
-.table th {
-  padding: 20px;
-  border: 1px solid #000;
-}
-
 header {
+  background-color: #fff;
   border-bottom: 1px solid #c31d1d;
 }
 
-.logo{
+.logo {
   display: block;
   padding-left: 20px;
   font-weight: 600;
@@ -43,7 +34,7 @@ header {
   color: #000;
 }
 
-.nav_links{
+.nav_links {
   list-style: none;
   display: flex;
   justify-content: space-evenly;
@@ -51,7 +42,7 @@ header {
   gap: 30px;
 }
 
-.nav_links :last-child{
+.nav_links :last-child {
   padding-right: 20px;
 }
 
@@ -59,7 +50,23 @@ header {
   color: #06a831;
 }
 
-footer{
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card {
+  width: 260px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;

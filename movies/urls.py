@@ -32,7 +32,7 @@ urlpatterns = [
     path('produse/<categorie>/', views.produse_viewer),
     path('laptop/<categorie>/', views.laptop_viewer),
     path('filme/', views.filme_viewer),
-    path('movie/<int:pk>/', views.MovieDetailView.as_view()),
+    path('movie/<int:pk>/', views.MovieDetailView.as_view(), name='spre_film'),
     path('create/', views.MovieCreateView.as_view(), name='create'),
     path('update/<int:pk>', views.MovieUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', views.MovieDeleteView.as_view(), name='delete'),
