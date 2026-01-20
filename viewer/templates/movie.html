@@ -2,11 +2,15 @@
 {% load static %}
 
 {% block content %}
-    <h1>Movies</h1>
+    <h1>Movie:</h1>
 
     <div class="movie_container">
         {{ movie.title }}
         {{ movie.year }}
         {{ movie.description }}
+
+        {% if movie.photo %}
+            <img src="{{ movie.photo.url }}" height="300px"/>
+        {% endif %}
     </div>
 {% endblock %}

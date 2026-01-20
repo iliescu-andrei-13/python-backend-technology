@@ -11,7 +11,20 @@
 <body>
     <header>
         <nav class="nav">
-            <a href="{% url 'home' %}">Site filme</a>
+            <a href="{% url 'home' %}" class="logo">Movies Site</a>
+            <ul class="nav_links">
+                <li>
+                    <a href="{% url 'create' %}">Add Movie</a>
+                </li>
+
+                <li>
+                    <a href="#">Update Movie</a>
+                </li>
+
+                <li>
+                    <a href="#">Delete Movie</a>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -28,7 +41,9 @@
 
     <footer>
         <p>
-            © 2026 Copyrights ... 
+            <strong>
+                © 2026 Copyright Movie Website. All Rights Reserved
+            </strong>
         </p>
     </footer>
 </body>

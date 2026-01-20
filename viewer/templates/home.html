@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
-    <h1>Aici o sa apara filmele</h1>
+    <h1>Movies Table</h1>
 
-    <table border="1" cellpadding="20" cellspacing="0" >
+    <table class="table">
         <thead>
             <tr>
                 <th>Titlu</th>
@@ -19,12 +19,11 @@
                     <td>{{ movie.title }}</td>
                     <td>{{ movie.year }}</td>
                     <td>{{ movie.description }}</td>
+                    {% if movie.photo %}
+                        <td><img src="{{ movie.photo.url }}" height="300px" /></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-
-    <br />
-
-    <img src="{% static 'images/cat.jpg' %}" alt="Cat picture" width="200px" />
 {% endblock %}

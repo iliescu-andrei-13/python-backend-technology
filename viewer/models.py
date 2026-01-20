@@ -5,6 +5,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=128, null=True, blank=True)
     year = models.PositiveIntegerField(default=2012, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    photo = models.ImageField(upload_to="movies/", null=True, blank=True)
 
 
 # 1. Crearea unui model nou

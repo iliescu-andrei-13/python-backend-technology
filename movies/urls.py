@@ -19,6 +19,8 @@ from django.urls import path
 # import facut de mine
 # from viewer.views import hello_viewer, produse_viewer, laptop_viewer
 from viewer import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
@@ -31,10 +33,11 @@ urlpatterns = [
     path('laptop/<categorie>/', views.laptop_viewer),
     path('filme/', views.filme_viewer),
     path('movie/<int:pk>/', views.MovieDetailView.as_view()),
-    path('create/', views.MovieCreateView.as_view()),
-    path('update/<int:pk>', views.MovieUpdateView.as_view()),
-    path('delete/<int:pk>', views.MovieDeleteView.as_view()),
-]
+    path('create/', views.MovieCreateView.as_view(), name='create'),
+    path('update/<int:pk>', views.MovieUpdateView.as_view(), name='update'),
+    path('delete/<int:pk>', views.MovieDeleteView.as_view(), name='delete'),
+    
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Exercitiu:
 # 1. Creare de url nou cu pattern
