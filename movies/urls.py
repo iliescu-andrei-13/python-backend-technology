@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.show_homepage, name='home'),
@@ -36,6 +37,10 @@ urlpatterns = [
     path('create/', views.MovieCreateView.as_view(), name='create'),
     path('update/<int:pk>', views.MovieUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', views.MovieDeleteView.as_view(), name='delete'),
+    
+    path("register/", views.register_user, name="register"),
+    path("login/", views.CustomLogInView.as_view(), name="login"),
+    path("logout/", views.logoout_view, name="logout"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

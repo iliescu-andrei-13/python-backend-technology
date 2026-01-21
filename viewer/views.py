@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # import facut de mine
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
 from viewer.models import Movie
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from viewer.forms import RegisterProfileForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.views import LoginView
 
 
 # Create your views here.
@@ -77,3 +80,28 @@ class MovieDeleteView(DeleteView):
     model = Movie
     template_name = "delete_movie.html"
     success_url = reverse_lazy("home")
+
+
+def register_user(request):
+    if request.method == "POST": # daca am trimis formularul completat
+        form = RegisterProfileForm(request.POST)
+        
+        if form.is_valid():
+            user = form.save()
+            login(request, user) # NU este obligatoriu
+            return redirect("home")
+        
+    else: # cand am intrat prima data pe register
+        form = RegisterProfileForm()
+        
+    return render(request, "register.html", {"form_html": form})
+
+
+class CustomLogInView(LoginView):
+    template_name = "login.html"
+    redirect_authenticated_user = True
+    
+    
+def logoout_view(request):
+    logout(request)
+    return redirect("home")
