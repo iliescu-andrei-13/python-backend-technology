@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>{{user.username}} Watchlist</h2>
+
+    {% if watchlist %}
+            <table border="1" cellpadding="7">
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Poster</th>
+                    </tr>
+                    {% for watchedmovie in watchlist %}
+                    <tr>
+                        <td>{{ watchedmovie.movie.title }}</td>
+                        <td>{{ watchedmovie.movie.year }}</td>
+                        <td><img src="{{ watchedmovie.movie.photo.url }}"" height="250px" /></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+    {% else %}
+        <p>No movies in watchlist now</p>
+    {% endif %}
+
+{% endblock %}

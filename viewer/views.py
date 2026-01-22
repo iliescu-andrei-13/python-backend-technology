@@ -138,3 +138,9 @@ class CustomLogInView(LoginView):
 def logoout_view(request):
     logout(request)
     return redirect("home")
+
+
+@login_required
+def watch_list(request):
+    watchlist = WatchMovie.objects.filter(user=request.user).select_related('movie')
+    return render(request, 'user_watchlist.html', {'watchlist': watchlist})

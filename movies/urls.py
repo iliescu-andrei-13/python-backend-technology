@@ -36,7 +36,7 @@ urlpatterns = [
     
     path('movie/<int:movie_id>/', views.movie_detail, name='spre_film'),
     path("movie/<int:movie_id>/toggle", views.toggle_wathed_movie, name="toggle_movie"),
-    
+    path('watchlist/', views.watch_list, name='watchlist'),
     
     path('create/', views.MovieCreateView.as_view(), name='create'),
     path('update/<int:pk>', views.MovieUpdateView.as_view(), name='update'),

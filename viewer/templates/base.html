@@ -26,6 +26,12 @@
                 </li>
 
                 {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'watchlist' %}">Watch List</a>
+                    </li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
                     <p>{{ user.username }}</p> | <a href="{% url 'logout' %}">Log Out</a>
                 {% else %}
                     <li>
