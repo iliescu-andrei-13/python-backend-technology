@@ -11,6 +11,17 @@
         {{ movie.year }}
         {{ movie.description }}
 
+        <form method="post" action="{% url 'toggle_movie' movie.id %}">
+            {% csrf_token %}
+            {% if is_watched %}
+                <button type="submit">Remove from Watchlist</button>
+            {% else %}
+                <button type="submit">Add to Watchlist</button>
+            {% endif %}
+        </form>
+
+        <br />
+
         {% if movie.photo %}
             <img src="{{ movie.photo.url }}" height="300px"/>
         {% endif %}

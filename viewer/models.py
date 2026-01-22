@@ -9,6 +9,14 @@ class Movie(models.Model):
     photo = models.ImageField(upload_to="movies/", null=True, blank=True)
 
 
+class WatchMovie(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    
+    class Meta:
+        unique_together = ('user', 'movie')
+
+
 # 1. Crearea unui model nou
 # 2. Adaugarea a doua elemente
 # 3. Actualizarea unui element

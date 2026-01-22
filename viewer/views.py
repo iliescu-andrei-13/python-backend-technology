@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # import facut de mine
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
-from viewer.models import Movie
+from viewer.models import Movie, WatchMovie
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from viewer.forms import RegisterProfileForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -54,6 +55,38 @@ def filter_movies(request):
         movies = movies.filter(year=year)
 
     return render(request, 'home.html', {'movies_html': movies})
+
+
+def movie_detail(request, movie_id):
+    movie = get_object_or_404(Movie, id=movie_id)
+    
+    is_watched = False
+    if request.user.is_authenticated:
+        is_watched = WatchMovie.objects.filter(
+            user = request.user,
+            movie = movie
+        ).exists()
+    
+    return render(request, 'movie.html', {'movie': movie,
+                                          'is_watched': is_watched,
+                                          })
+
+
+@login_required
+def toggle_wathed_movie(request, movie_id):
+    movie = get_object_or_404(Movie, id=movie_id)
+    
+    watched_movie, created = WatchMovie.objects.get_or_create(
+        user = request.user,
+        movie = movie
+    )
+    
+    # Exista in tabela, vrem sa-l stergem
+    if not created:
+        watched_movie.delete()
+    
+    # A fast adaugat/sters in/din tabela, facem refresh
+    return redirect('spre_film', movie_id=movie.id)
 
 
 class MovieDetailView(DetailView):
